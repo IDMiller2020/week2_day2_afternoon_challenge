@@ -4,6 +4,10 @@
 // output: ['is', 'a', 'split', 'sentence.', 'This']
 
 function rearranger(arr) {
+  let word
+  word = arr.shift()
+  arr.push(word)
+  return arr
 }
 
 
@@ -16,7 +20,33 @@ function rearranger(arr) {
 // output: 42
 
 function largestNum(arr) {
+    let largest = arr[0]
+    let duplicates = {repeated: false, large: arr[0], amount: 0}
+    arr.forEach(num => {
+        if (num > largest) {
+            largest = num
+        }
+    }
+        )
+      
+    return largest
+
 }
+/*
+    if (num > largest) {
+        largest = num
+    } else if (num = largest) {
+      duplicates.repeated = true
+      duplicates.large = num
+      duplicates.amount++
+    }
+  })
+  if (duplicates.repeated === true) {
+    return duplicates
+  } else {
+    return largest
+  }
+*/
 
 
 // ------------------------------------------
@@ -28,6 +58,8 @@ function largestNum(arr) {
 // output: [16, 8, 4, 28]
 
 function elemsTimesLength(arr) {
+    const map1 = arr.map(x => x * arr.length)
+    return map1
 }
 
 
@@ -62,8 +94,15 @@ let flights = [{
 
 
 function flightCost(destination, firstClass) {
-    //***hint: use the find method***
-
+//***hint: use the find method***
+    destination = destination.toUpperCase()
+    // firstClass = firstClass.toLowerCase()
+    const trip = flights.find(flight => flight.to === destination)
+    if (firstClass === true) {
+        return trip.prices.firstClass
+    } else {
+        return trip.prices.standard
+    }
 }
 
 
@@ -84,7 +123,14 @@ let staff = [{ id: 1, name: 'Jon' }, { id: 2, name: 'Yuli' }, { id: 21, name: 'P
 { id: 881, name: 'Paul' }, { id: 0, name: 'Jon' }, { id: 999, name: 'Timma' }]
 
 function findById(id) {
-
+//    debugger
+  let notFound = {error: 'No user with that id'}
+  const found = staff.find(person => person.id === id)
+  if (found) {
+      return found
+  } else {
+    return notFound
+  }
 }
 
 
@@ -111,4 +157,11 @@ let theBand = {
 }
 
 function bandMemberDetails(name) {
+    let response = ''
+    theBand.members.forEach(member => {
+        if (member.name === name) {
+            response = `${name} is in the band and plays the ${member.instrument}`
+        }
+    })
+    return response
 }
