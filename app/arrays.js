@@ -179,7 +179,6 @@ function bandMemberDetails(name) {
         let memberLowerCase = member.name.toLowerCase()
         if (memberLowerCase === lowerCaseName || memberLowerCase.includes(lowerCaseName)) {
             response = `${member.name} is in the band and plays the ${member.instrument}`
-            console.log(response)
         }
     })
     return response
