@@ -19,19 +19,36 @@ function rearranger(arr) {
 // input: [6, 4, 8, 33, 42, 10]
 // output: 42
 
+
+//  WITH STRETCH GOAL
 function largestNum(arr) {
+    let duplicate = {}
+    let numLargest = 0
     let largest = arr[0]
-    let duplicates = {repeated: false, large: arr[0], amount: 0}
-    arr.forEach(num => {
-        if (num > largest) {
-            largest = num
+
+    // itterates through the array and finds the largest number, stores it in 'largest'.
+    for (let z = 1; z < arr.length; z++) {
+        if (arr[z] > largest) {
+            largest = arr[z]
         }
     }
-        )
-      
-    return largest
 
+    // itterates through the array and counts how many elements are equal to largest, stores it in 'numLargest'.
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i] === largest) {
+            numLargest++
+        }
+    }
+
+    //  if there is more than one largest number return the 'duplicate' object, otherwise return the largest number.
+    if (numLargest > 1) {
+        duplicate[largest] = numLargest
+        return duplicate
+    } else {
+        return largest
+    }
 }
+
 /*
     if (num > largest) {
         largest = num
@@ -46,6 +63,21 @@ function largestNum(arr) {
   } else {
     return largest
   }
+*/
+
+/*
+//  THIS WORKS (NOT INCLUDING THE STRETCH GOAL)
+function largestNum(arr) {
+    let largest = arr[0]
+    arr.forEach(num => {
+        if (num > largest) {
+            largest = num
+        }
+    }
+        )
+      
+    return largest
+}
 */
 
 
