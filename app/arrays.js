@@ -50,22 +50,6 @@ function largestNum(arr) {
 }
 
 /*
-    if (num > largest) {
-        largest = num
-    } else if (num = largest) {
-      duplicates.repeated = true
-      duplicates.large = num
-      duplicates.amount++
-    }
-  })
-  if (duplicates.repeated === true) {
-    return duplicates
-  } else {
-    return largest
-  }
-*/
-
-/*
 //  THIS WORKS (NOT INCLUDING THE STRETCH GOAL)
 function largestNum(arr) {
     let largest = arr[0]
@@ -189,10 +173,13 @@ let theBand = {
 }
 
 function bandMemberDetails(name) {
+    let lowerCaseName = name.toLowerCase()
     let response = ''
     theBand.members.forEach(member => {
-        if (member.name === name) {
-            response = `${name} is in the band and plays the ${member.instrument}`
+        let memberLowerCase = member.name.toLowerCase()
+        if (memberLowerCase === lowerCaseName || memberLowerCase.includes(lowerCaseName)) {
+            response = `${member.name} is in the band and plays the ${member.instrument}`
+            console.log(response)
         }
     })
     return response
